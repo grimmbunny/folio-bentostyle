@@ -599,101 +599,13 @@ p {
 	opacity: 1;
 }
 
-.work-experiance-card {
-	overflow: hidden;
-	height: 299px;
-}
-
-.work-experiance-card .work-experiance-main {
-	max-height: 220px;
-	overflow: hidden;
-	display: flex;
-	flex-direction: column;
-	gap: 16px;
-}
-
-.work-experiance-card .work-experiance-slider {
-	animation: scrollY 10s linear infinite;
-}
-
-@keyframes scrollY {
-	0% {
-		transform: translateY(0)
-	}
-
-	to {
-		transform: translateY(calc(-100% - 1rem))
-	}
-}
-
-.work-experiance-card .work-experiance-main:hover .work-experiance-slider {
-	animation-play-state: paused;
-}
-
-.work-experiance-card .work-experiance-slider li+li {
-	margin-top: 16px;
-}
-
-.work-experiance-card .work-experiance-slider li {
-	display: flex !important;
-	gap: 30px;
-}
-
-.animate-scrollY:hover .work-experiance-slider {
-	animation-play-state: paused;
-}
-
-
-.work-experiance-card .work-experiance-slider li .date {
-	margin-right: 40px;
-}
-
-.work-experiance-card .work-experiance-slider li .date p {
-	font-size: 14px;
-	font-weight: 500;
-	color: var(--light-black);
-}
-
-.work-experiance-card .work-experiance-slider li .info {
-	display: flex;
-	align-items: center;
-	gap: 12px;
-}
-
-.work-experiance-card .work-experiance-slider li .info .icon {
-	border-radius: 8px;
-	width: 32px;
-	height: 32px;
-	background-color: var(--background);
-	display: flex;
-	justify-content: center;
-	align-items: center;
-}
-
-.work-experiance-card .work-experiance-slider li .info .icon img {
-	width: 20px;
-}
-
-.work-experiance-card .work-experiance-slider li .info .text .title {
-	font-size: 16px;
-	font-weight: 600;
-	color: var(--black);
-	line-height: 1.5em;
-}
-
-.work-experiance-card .work-experiance-slider li .info .text .subtitle {
-	font-size: 14px;
-	font-weight: 400;
-	color: var(--light-black);
-	line-height: 1.42em;
-}
-
 .expertise-card {
-	height: 299px;
+	height: auto;
 }
 
 .expertise-card .expertise-item {
 	text-align: center;
+	flex-shrink: 0;
 }
 
 .expertise-card .expertise-item .image {
@@ -2215,24 +2127,12 @@ p {
 	color: var(--primary);
 }
 
-.dark-theme .work-experiance-card .work-experiance-slider li .date p {
-	color: var(--dark-theme-light-white);
-}
-
-.dark-theme .work-experiance-card .work-experiance-slider li .info .text .title {
-	color: var(--dark-theme-light-white);
-}
-
 .dark-theme .footer-area .text p {
 	color: var(--dark-theme-light-white);
 }
 
 .dark-theme .common-button-groups .btn.btn-copy::before {
 	background-color: #334155;
-}
-
-.dark-theme .work-experiance-card .work-experiance-slider li .info .icon {
-	background-color: var(--dark-theme-black);
 }
 
 .dark-theme .content-box-card .counter-area .circle-text .circle-image {
@@ -2570,4 +2470,299 @@ p {
 .dark-theme .portfolio-details-area .prev-and-next-btn .btn:hover {
 	background-color: var(--primary);
 	color: var(--white);
+}
+
+/* Estilos da Timeline Card */
+.timeline-card .card-body {
+	height: 299px;
+	/* Mesma altura do card original */
+	display: flex;
+	flex-direction: column;
+}
+
+.timeline-card .timeline-main {
+	flex-grow: 1;
+	overflow-y: auto;
+	padding-right: 10px;
+	/* Espaço para a barra de rolagem */
+}
+
+.timeline-card .timeline-list {
+	position: relative;
+	border-left: 2px solid var(--border);
+	padding-left: 30px;
+	margin-left: 6px;
+}
+
+.timeline-card .timeline-item {
+	position: relative;
+	padding-bottom: 24px;
+}
+
+.timeline-card .timeline-item:last-child {
+	padding-bottom: 0;
+}
+
+.timeline-card .timeline-item::before {
+	content: "";
+	position: absolute;
+	top: 6px;
+	left: -39px;
+	width: 14px;
+	height: 14px;
+	border-radius: 50%;
+	background-color: var(--background);
+	border: 3px solid var(--primary);
+}
+
+.timeline-card .timeline-item .date p {
+	font-size: 14px;
+	font-weight: 500;
+	color: var(--light-black);
+	margin-bottom: 4px;
+}
+
+.timeline-card .timeline-item .info .title {
+	font-size: 16px;
+	font-weight: 600;
+	color: var(--black);
+	line-height: 1.4em;
+	margin-bottom: 2px;
+}
+
+.timeline-card .timeline-item .info .subtitle {
+	font-size: 14px;
+	font-weight: 400;
+	color: var(--primary);
+	line-height: 1.5em;
+	margin-bottom: 8px;
+}
+
+.timeline-card .timeline-item .info .details {
+	list-style-type: none;
+	/* Removido os marcadores */
+	padding-left: 0;
+	margin-bottom: 0;
+}
+
+.timeline-card .timeline-item .info .details li {
+	font-size: 14px;
+	color: var(--paragraph);
+	margin-bottom: 4px;
+	line-height: 1.5;
+	position: relative;
+	padding-left: 15px;
+	/* Espaço para o marcador personalizado */
+}
+
+.timeline-card .timeline-item .info .details li::before {
+	content: '•';
+	position: absolute;
+	left: 0;
+	color: var(--primary);
+}
+
+
+/* Estilos da barra de rolagem da Timeline */
+.timeline-card .timeline-main::-webkit-scrollbar {
+	width: 4px;
+}
+
+.timeline-card .timeline-main::-webkit-scrollbar-track {
+	background: var(--background);
+	border-radius: 4px;
+}
+
+.timeline-card .timeline-main::-webkit-scrollbar-thumb {
+	background: #ccc;
+	border-radius: 4px;
+}
+
+.timeline-card .timeline-main::-webkit-scrollbar-thumb:hover {
+	background: #aaa;
+}
+
+
+/* Estilos da Timeline para o Tema Escuro */
+.dark-theme .timeline-card .timeline-list {
+	border-left-color: var(--dark-theme-black);
+}
+
+.dark-theme .timeline-card .timeline-item::before {
+	background-color: var(--dark-theme-black);
+}
+
+.dark-theme .timeline-card .timeline-item .date p {
+	color: var(--dark-theme-light-white);
+}
+
+.dark-theme .timeline-card .timeline-item .info .title {
+	color: var(--white);
+}
+
+.dark-theme .timeline-card .timeline-item .info .subtitle {
+	color: var(--primary);
+}
+
+.dark-theme .timeline-card .timeline-item .info .details li {
+	color: var(--dark-theme-light-white);
+}
+
+.dark-theme .timeline-card .timeline-main::-webkit-scrollbar-track {
+	background: var(--dark-theme-black);
+}
+
+.dark-theme .timeline-card .timeline-main::-webkit-scrollbar-thumb {
+	background: #4A5568;
+}
+
+.dark-theme .timeline-card .timeline-main::-webkit-scrollbar-thumb:hover {
+	background: #718096;
+}
+
+/* Animação de scroll horizontal para a área de especialidades */
+.expertise-card .expertise-main {
+	overflow: hidden;
+	display: flex;
+}
+
+.expertise-card .expertise-slider {
+	display: flex;
+	flex-shrink: 0;
+	gap: 1.5rem;
+	animation: scrollX 25s linear infinite;
+}
+
+.expertise-card .expertise-main:hover .expertise-slider {
+	animation-play-state: paused;
+}
+
+@keyframes scrollX {
+	from {
+		transform: translateX(0);
+	}
+
+	to {
+		transform: translateX(calc(-100% - 1.5rem));
+	}
+}
+
+/* Estilos para a seção de Skills com scroll */
+.skills-main {
+	display: flex;
+	overflow: hidden;
+	gap: 1.5rem;
+	padding-top: 1.5rem;
+	border-top: 1px solid var(--border);
+	margin-top: 1.5rem;
+}
+
+.skills-main:hover .skills-slider {
+	animation-play-state: paused;
+}
+
+.skills-slider {
+	display: flex;
+	flex-shrink: 0;
+	gap: 12px;
+	animation: scrollXSkills 35s linear infinite;
+}
+
+.skill-item {
+	background-color: var(--background);
+	color: var(--light-black);
+	padding: 6px 14px;
+	border-radius: 20px;
+	font-size: 14px;
+	font-weight: 500;
+	line-height: 1.5;
+	white-space: nowrap;
+}
+
+@keyframes scrollXSkills {
+	from {
+		transform: translateX(0);
+	}
+
+	to {
+		transform: translateX(calc(-100% - 1.5rem));
+	}
+}
+
+/* Ajustes para o Tema Escuro (Skills) */
+.dark-theme .skills-main {
+	border-top-color: var(--dark-theme-black);
+}
+
+.dark-theme .skill-item {
+	background-color: var(--dark-theme-black);
+	color: var(--dark-theme-light-white);
+}
+
+/* Ajuste para a imagem de perfil */
+.profile-card .image {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	aspect-ratio: 1 / 1;
+	/* Força o contêiner a ser quadrado */
+}
+
+.profile-card .image img {
+	margin-top: 0;
+	width: 100%;
+	height: 100%;
+	object-fit: contain;
+	/* Garante que a imagem inteira seja visível */
+}
+
+/* Ajustes para o layout do card Skillset */
+.expertise-card .card-body {
+	display: flex;
+	flex-direction: column;
+	height: 100%;
+}
+
+.expertise-card .expertise-main {
+	flex-grow: 0;
+	/* Permite que a área de ícones tenha altura natural */
+}
+
+.expertise-card .skills-main {
+	flex-grow: 1;
+	/* Faz a área de skills ocupar o espaço restante */
+	min-height: 0;
+	/* Previne problemas de overflow com flexbox */
+}
+
+/* Restaurando o scroll horizontal para os ícones */
+.expertise-card .expertise-main {
+	overflow: hidden;
+	display: flex;
+	gap: 1.5rem;
+}
+
+.expertise-card .expertise-slider {
+	display: flex;
+	flex-shrink: 0;
+	gap: 1.5rem;
+	animation: scrollX 25s linear infinite;
+}
+
+.expertise-card .expertise-main:hover .expertise-slider {
+	animation-play-state: paused;
+}
+
+@keyframes scrollX {
+	from {
+		transform: translateX(0);
+	}
+
+	to {
+		transform: translateX(calc(-100% - 1.5rem));
+	}
+}
+
+.expertise-card .expertise-item {
+	flex-shrink: 0;
 }

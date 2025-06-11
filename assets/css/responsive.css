@@ -484,3 +484,68 @@
     height: 64px;
   }
 }
+
+@media (min-width: 1200px) {
+
+  /* Faz as colunas se esticarem para ter a mesma altura */
+  .home-area>.container>.row {
+    align-items: stretch;
+  }
+
+  /* Força os cards a ocuparem todo o espaço da coluna */
+  .home-area .col-xl-4 {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .home-area .col-xl-4>.card {
+    flex-grow: 1;
+  }
+
+  /* Coluna do Meio (Timeline & Expert Area) */
+  .home-area .col-xl-4:nth-child(2)>.row {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .home-area .col-xl-4:nth-child(2)>.row>.col-lg-12 {
+    display: flex;
+    flex: 1;
+    /* Divide o espaço vertical igualmente (50% para cada card) */
+  }
+
+  .home-area .col-xl-4:nth-child(2)>.row>.col-lg-12>.card {
+    width: 100%;
+  }
+
+  /* Coluna da Direita (Recent Projects) */
+  .card-projects,
+  .card-projects .card-body {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .card-projects .projects-main {
+    flex-grow: 1;
+  }
+
+  .card-projects .projects-main>.row {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .card-projects .projects-main>.row>.col-lg-12 {
+    flex: 1;
+    /* Divide o espaço vertical igualmente (50% para cada projeto) */
+    display: flex;
+    flex-direction: column;
+  }
+
+  .card-projects .projects-main .project-item {
+    width: 100%;
+    flex-grow: 1;
+  }
+}
