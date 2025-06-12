@@ -2472,26 +2472,138 @@ p {
 	color: var(--white);
 }
 
-/* Estilos da Timeline Card */
+/* Estilos da Timeline Card com Animação Vertical */
 .timeline-card .card-body {
 	height: 299px;
-	/* Mesma altura do card original */
 	display: flex;
 	flex-direction: column;
 }
 
 .timeline-card .timeline-main {
 	flex-grow: 1;
-	overflow-y: auto;
-	padding-right: 10px;
-	/* Espaço para a barra de rolagem */
+	overflow: hidden;
+	/* Esconde o conteúdo que transborda */
+	display: flex;
+	flex-direction: column;
+	gap: 40px;
+	/* Espaço entre as duas listas duplicadas */
 }
 
+/* Aplica a animação nas listas */
 .timeline-card .timeline-list {
 	position: relative;
 	border-left: 2px solid var(--border);
 	padding-left: 30px;
 	margin-left: 6px;
+	animation: scrollYTimeline 80s linear infinite;
+}
+
+/* Pausa a animação com o mouse sobre a área */
+.timeline-card .timeline-main:hover .timeline-list {
+	animation-play-state: paused;
+}
+
+/* Animação de rolagem vertical */
+@keyframes scrollYTimeline {
+	from {
+		transform: translateY(0);
+	}
+
+	to {
+		transform: translateY(calc(-100% - 40px));
+		/* Move pela sua altura + o gap */
+	}
+}
+
+.timeline-card .timeline-item {
+	position: relative;
+	padding-bottom: 40px;
+}
+
+.timeline-card .timeline-item:last-child {
+	padding-bottom: 0;
+}
+
+.timeline-card .timeline-item::before {
+	content: "";
+	position: absolute;
+	top: 6px;
+	left: -39px;
+	width: 14px;
+	height: 14px;
+	border-radius: 50%;
+	background-color: var(--background);
+	border: 3px solid var(--primary);
+}
+
+.timeline-card .timeline-item .date p {
+	font-size: 14px;
+	font-weight: 500;
+	color: var(--light-black);
+	margin-bottom: 4px;
+}
+
+.timeline-card .timeline-item .info .title {
+	font-size: 16px;
+	font-weight: 600;
+	color: var(--black);
+	line-height: 1.4em;
+	margin-bottom: 2px;
+}
+
+.timeline-card .timeline-item .info .subtitle {
+	font-size: 14px;
+	font-weight: 400;
+	color: var(--primary);
+	line-height: 1.5em;
+	margin-bottom: 8px;
+}
+
+.timeline-card .timeline-item .info .details {
+	list-style-type: none;
+	padding-left: 0;
+	margin-bottom: 0;
+}
+
+.timeline-card .timeline-item .info .details li {
+	font-size: 14px;
+	color: var(--paragraph);
+	margin-bottom: 4px;
+	line-height: 1.5;
+	position: relative;
+	padding-left: 15px;
+}
+
+.timeline-card .timeline-item .info .details li::before {
+	content: '•';
+	position: absolute;
+	left: 0;
+	color: var(--primary);
+}
+
+/* Estilos da Timeline para o Tema Escuro (sem alterações aqui, apenas mantendo) */
+.dark-theme .timeline-card .timeline-list {
+	border-left-color: var(--dark-theme-black);
+}
+
+.dark-theme .timeline-card .timeline-item::before {
+	background-color: var(--dark-theme-black);
+}
+
+.dark-theme .timeline-card .timeline-item .date p {
+	color: var(--dark-theme-light-white);
+}
+
+.dark-theme .timeline-card .timeline-item .info .title {
+	color: var(--white);
+}
+
+.dark-theme .timeline-card .timeline-item .info .subtitle {
+	color: var(--primary);
+}
+
+.dark-theme .timeline-card .timeline-item .info .details li {
+	color: var(--dark-theme-light-white);
 }
 
 .timeline-card .timeline-item {
@@ -2765,4 +2877,252 @@ p {
 
 .expertise-card .expertise-item {
 	flex-shrink: 0;
+}
+
+/* Estilos para a nova seção de serviços */
+.service-category {
+	background-color: var(--background);
+	padding: 24px;
+	border-radius: 16px;
+	height: 100%;
+}
+
+.service-category .category-header {
+	display: flex;
+	align-items: center;
+	gap: 12px;
+	margin-bottom: 20px;
+}
+
+.service-category .category-header i {
+	font-size: 22px;
+	color: var(--primary);
+}
+
+.service-category .category-header h4 {
+	font-size: 20px;
+	font-weight: 600;
+	color: var(--black);
+	margin: 0;
+}
+
+.service-category .service-list {
+	list-style-type: none;
+	padding-left: 0;
+}
+
+.service-category .service-list li {
+	color: var(--paragraph);
+	font-size: 16px;
+	padding-left: 22px;
+	position: relative;
+	margin-bottom: 10px;
+}
+
+.service-category .service-list li::before {
+	content: '✓';
+	position: absolute;
+	left: 0;
+	top: 1px;
+	color: var(--primary);
+	font-weight: 900;
+}
+
+/* Ajustes para o Tema Escuro */
+.dark-theme .service-category {
+	background-color: var(--dark-theme-black);
+}
+
+.dark-theme .service-category .category-header h4 {
+	color: var(--dark-theme-white);
+}
+
+.dark-theme .service-category .service-list li {
+	color: var(--dark-theme-light-white);
+}
+
+
+/* Estilos para informações de contato no card "Let's Talk" */
+.contact-info-wrap {
+	border-top: 1px solid var(--border);
+	padding-top: 24px;
+	margin-top: 24px;
+}
+
+.contact-info-link {
+	display: block;
+	color: var(--light-black);
+	font-size: 16px;
+	font-weight: 500;
+	text-decoration: none;
+	margin-bottom: 12px;
+}
+
+.contact-info-link:last-child {
+	margin-bottom: 0;
+}
+
+.contact-info-link:hover {
+	color: var(--primary);
+}
+
+.contact-info-link i {
+	margin-right: 10px;
+	width: 20px;
+	text-align: center;
+	color: var(--primary);
+}
+
+/* Ajustes para o Tema Escuro */
+.dark-theme .contact-info-wrap {
+	border-top-color: var(--dark-theme-black);
+}
+
+.dark-theme .contact-info-link {
+	color: var(--dark-theme-light-white);
+}
+
+.dark-theme .contact-info-link:hover {
+	color: var(--primary);
+}
+
+
+/* =================================== */
+/* == Card de Skillset (Ícones e Skills) == */
+/* =================================== */
+
+.skillset-card .card-body {
+	display: flex;
+	flex-direction: column;
+	height: 100%;
+}
+
+.skillset-card .tools-main,
+.skillset-card .skills-main {
+	flex: 1;
+	min-height: 0;
+	/* Previne problemas de overflow do flexbox */
+}
+
+/* --- Scroller de Ferramentas (Ícones) --- */
+.skillset-card .tools-main {
+	overflow: hidden;
+	display: flex;
+	gap: 1.5rem;
+}
+
+.skillset-card .tools-slider {
+	display: flex;
+	flex-shrink: 0;
+	gap: 1rem;
+	animation: scrollXTools 50s linear infinite;
+	width: fit-content;
+	/* Adicione esta linha */
+}
+
+.skillset-card .tools-main:hover .tools-slider {
+	animation-play-state: paused;
+}
+
+.skillset-card .expertise-item {
+	text-align: center;
+	flex-shrink: 0;
+}
+
+.skillset-card .expertise-item .image {
+	background-color: var(--background);
+	border-radius: 8px;
+	padding: 14px 10px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	height: 70px;
+	width: 90px;
+}
+
+.skillset-card .expertise-item .image img {
+	width: 32px;
+	height: 32px;
+}
+
+.skillset-card .expertise-item .text .title {
+	font-size: 14px;
+	font-weight: 500;
+	color: var(--light-black);
+	line-height: 1.5em;
+	margin-top: 8px;
+}
+
+@keyframes scrollXTools {
+	from {
+		transform: translateX(0);
+	}
+
+	to {
+		/* Rola exatamente metade da largura total para um loop perfeito */
+		transform: translateX(-50%);
+	}
+}
+
+/* --- Scroller de Soft Skills --- */
+.skillset-card .skills-main {
+	display: flex;
+	overflow: hidden;
+	gap: 1.5rem;
+	padding-top: 1.5rem;
+	border-top: 1px solid var(--border);
+	margin-top: 1.5rem;
+}
+
+.skillset-card .skills-main:hover .skills-slider {
+	animation-play-state: paused;
+}
+
+.skillset-card .skills-slider {
+	display: flex;
+	flex-shrink: 0;
+	gap: 12px;
+	animation: scrollXSkills 35s linear infinite;
+	align-items: center;
+	/* Adicione esta linha */
+}
+
+.skillset-card .skill-item {
+	background-color: var(--background);
+	color: var(--light-black);
+	padding: 6px 14px;
+	border-radius: 20px;
+	font-size: 14px;
+	font-weight: 500;
+	line-height: 1.5;
+	white-space: nowrap;
+}
+
+@keyframes scrollXTools {
+	from {
+		transform: translateX(0);
+	}
+
+	to {
+		/* Rola exatamente metade da largura total para um loop perfeito */
+		transform: translateX(-50%);
+	}
+}
+
+/* --- Dark Theme para Skillset Card --- */
+.dark-theme .skillset-card .expertise-item .image {
+	background-color: var(--dark-theme-black);
+}
+
+.dark-theme .skillset-card .expertise-item .text .title {
+	color: var(--dark-theme-light-white);
+}
+
+.dark-theme .skillset-card .skills-main {
+	border-top-color: var(--dark-theme-black);
+}
+
+.dark-theme .skillset-card .skill-item {
+	background-color: var(--dark-theme-black);
+	color: var(--dark-theme-light-white);
 }
