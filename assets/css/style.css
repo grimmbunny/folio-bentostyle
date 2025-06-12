@@ -3126,3 +3126,24 @@ p {
 	background-color: var(--dark-theme-black);
 	color: var(--dark-theme-light-white);
 }
+
+
+/* Estilos para o subtítulo do perfil */
+.profile-card .text .profile-subtitle {
+	font-size: 16px;
+	font-weight: 600;
+	color: var(--primary);
+	line-height: 1.5em;
+	margin-top: 4px;
+	margin-bottom: 16px;
+}
+
+/* Ajuste no parágrafo para melhor espaçamento */
+.profile-card .text p {
+	margin-bottom: 1rem;
+}
+
+/* Ajuste no tema escuro */
+.dark-theme .profile-card .text p {
+	color: var(--dark-theme-light-white);
+}
